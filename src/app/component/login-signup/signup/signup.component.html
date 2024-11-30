@@ -1,0 +1,67 @@
+<ng-container>
+  <form [formGroup]="userDetails" 
+  (ngSubmit)="saveData()"
+  >
+    <div class="card-section" >
+      <mat-card>
+        <mat-card-content>
+          <mat-card-header>Signup</mat-card-header>
+          <mat-radio-group formControlName="gender">
+              <mat-label>I'm a*</mat-label>
+            <button 
+              mat-raised-button
+              [ngClass]="UserGender == 'male' ? 'custom-button-color' : 'default-button-color'"
+              (click)="genderbuttonClick('male')"
+              value="male"
+              >
+              Male
+            </button>
+            <button  
+            mat-raised-button
+              [ngClass]="UserGender == 'female' ? 'custom-button-color' : 'default-button-color'"
+              (click)="genderbuttonClick('female')"
+              value="female"
+              >
+              Female
+            </button>
+          </mat-radio-group>
+          <mat-label>Full Name*</mat-label>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-label>Email Address*</mat-label>
+          <mat-form-field>
+            <input matInput formControlName="email">
+            <!-- If user forget to put the email -->
+            <mat-error *ngIf="userDetails.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <!-- For the password doent match to regx -->
+            <mat-error *ngIf="userDetails.get('email')?.hasError('pattern')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <mat-label>Create Password*</mat-label>
+          <mat-form-field class="password">
+            <input matInput type="password" formControlName="password">
+          </mat-form-field>
+          <mat-label>Confirm Password*</mat-label>
+          <mat-form-field class="password">
+            <input matInput type="password" formControlName="cPassword">
+          </mat-form-field>
+          <mat-label>Skills*</mat-label>
+          <mat-form-field>
+            <input matInput formControlName="skills">
+          </mat-form-field>
+        </mat-card-content>
+        <div>
+          <button type="submit">Signup</button>
+        </div>
+        <mat-card-footer>Have an account?
+          <!-- <a (click)="toggleForm()" style="color: blue;"
+          > Login</a> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </form>
+  </ng-container>

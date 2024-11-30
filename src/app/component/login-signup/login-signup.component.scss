@@ -1,0 +1,31 @@
+.card-section{
+    width: 40%;
+    height: 90%;
+}
+label{
+    display: block;
+}
+mat-form-field{
+    display: block;
+}
+.password{
+    display: inline;
+}
+.custom-button-color {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  
+  .default-button-color {
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  mat-label{
+    display: block;
+  }

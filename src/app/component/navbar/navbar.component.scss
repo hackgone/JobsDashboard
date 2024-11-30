@@ -1,0 +1,38 @@
+
+.toolbar-class{
+    background-color: rgb(33, 45, 71);
+    
+    img{
+        width: 150px;
+        margin-left: 4vw;
+    }
+    .spacer{
+        flex: 1 1 auto;
+    }
+    #button1{
+            // margin-top: 10px;
+            height: 40px;
+            width: 10%;
+            border-radius: 8px;
+            background-color: rgb(51, 84, 126);
+            color: white;
+            border: 1px solid rgb(121, 150, 188);
+            margin-right: 5vw;
+            
+        }
+}
+
+.baseline {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(33, 45, 71);
+    display: flex;
+    justify-content: center;
+    div{
+        
+        height: 100%;
+        width: 88vw;
+        background-color: white;
+    }
+    
+  }

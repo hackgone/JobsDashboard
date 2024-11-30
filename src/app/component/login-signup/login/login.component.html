@@ -1,0 +1,37 @@
+<form [formGroup]="userDetails" (ngSubmit)="checkCreds()" >
+  <div class="card-section">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-header>Login</mat-card-header>
+        <mat-label>Email Address</mat-label>
+        <mat-form-field>
+          <input matInput formControlName="email">
+          <!-- If user forget to put the email -->
+          <mat-error *ngIf="userDetails.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <!-- For the password doent match to regx -->
+          <mat-error *ngIf="userDetails.get('email')?.hasError('pattern')">
+            Please enter a valid email address
+          </mat-error>
+          
+        </mat-form-field>
+        
+        <mat-label>Password</mat-label>
+        <mat-label><a [routerLink]="['/login-signup/forgetpassword']" style="color: blue;">Forget your password?</a> </mat-label>
+        <mat-form-field class="password">
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        <mat-error *ngIf="wrongCreds" class="password-error">
+          Incorrect email address or password
+        </mat-error>
+      </mat-card-content>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+      <mat-card-footer>New To MyJobs?
+          <a [routerLink]="['/login-signup/signup']" style="color: blue;"> Create an account</a>
+      </mat-card-footer>
+    </mat-card>
+    </div>
+  </form>
