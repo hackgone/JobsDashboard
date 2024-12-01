@@ -10,6 +10,7 @@
               <mat-label>I'm a*</mat-label>
             <button 
               mat-raised-button
+              type="button"
               [ngClass]="UserGender == 'male' ? 'custom-button-color' : 'default-button-color'"
               (click)="genderbuttonClick('male')"
               value="male"
@@ -18,6 +19,7 @@
             </button>
             <button  
             mat-raised-button
+            type="button"
               [ngClass]="UserGender == 'female' ? 'custom-button-color' : 'default-button-color'"
               (click)="genderbuttonClick('female')"
               value="female"

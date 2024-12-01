@@ -42,7 +42,11 @@ export class SignupComponent {
       skills: formValue.skills,
       gender: formValue.gender
     };
-    this.userData.postUserData(user)
+    this.userData.postUserData(user).subscribe({
+      next: (id) => console.log(`User added with ID: ${id}`), // Logs the key of the new item
+      error: (err) => console.error('Error adding user:', err),
+      complete: () => console.log('Add operation complete'),
+    });
     console.log(this.userData.getUserData());
     this.userDetails.reset(); // to reset the evalues
     console.log(this.userDetails.value); // Logs the form data

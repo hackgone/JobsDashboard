@@ -18,7 +18,7 @@ export class ForgetpasswordComponent {
     console.log(this.userService.getUserData());
   }
   getUser(){
-    if(this.userService.checkEmail(this.email)){
+    if(this.userService.checkEmail(this.email,[])){
       this.resetpassword = true;
       this.IsUserFound = true;
       console.log("t")
@@ -28,7 +28,7 @@ export class ForgetpasswordComponent {
     }
   }
   restPassword(){
-    if(this.userService.updateUserPassword(this.email,this.password)){
+    if(this.userService.updateUserPassword(this.email,this.password,[])){
       this.router.navigate(['/login-signup/login'])
     }
     console.log("Error Occured")
