@@ -18,19 +18,31 @@ export class ForgetpasswordComponent {
     console.log(this.userService.getUserData());
   }
   getUser(){
-    if(this.userService.checkEmail(this.email,[])){
-      this.resetpassword = true;
-      this.IsUserFound = true;
-      console.log("t")
-    }else{
-      this.IsUserFound = false;
-      console.log("f")
-    }
+   this.userService.checkEmail(this.email).subscribe({
+      next:(res) =>{
+        if(res){
+          this.resetpassword = true;
+          this.IsUserFound = true;
+          console.log("t")
+        }else{
+          this.IsUserFound = false;
+          console.log("f")
+        }
+      },
+      error:(err)=>{
+        console.log(err)
+      },
+    });
   }
   restPassword(){
-    if(this.userService.updateUserPassword(this.email,this.password,[])){
-      this.router.navigate(['/login-signup/login'])
-    }
-    console.log("Error Occured")
+    this.userService.updateUserPassword(this.email,this.password).subscribe({
+      next:(res)=>{
+        if(res){
+          this.router.navigate(['/login-signup/login'])
+        }
+        console.log("Error Occured")
+      }
+    })
+    
   }
 }

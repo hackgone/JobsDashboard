@@ -29,23 +29,23 @@ export class LoginComponent {
 
     
   }
-  checkCreds(){
-   
-    // console.log(this.userService.getUserData());
-    this.userService.getUserData().subscribe({
-      next: (response) => {
-        this.responsedata = response; // Update component property
-        console.log(this.responsedata); // Process the response
-      },
-    })
+  checkCreds(): void {
     const loginUser = this.userDetails.value as LoginUser;
-    if(!this.userService.checkUser(loginUser.email,loginUser.password,this.responsedata)) {
-      this.wrongCreds = true
-    }else{
-      this.wrongCreds = false
-      this.router.navigate(['/jobs-page'])
-    }
-    
+  
+    this.userService.checkUser(loginUser.email, loginUser.password).subscribe({
+      next: (isValid) => {
+        if (isValid) {
+          this.wrongCreds = false; // Credentials are correct
+          this.router.navigate(['/jobs-page']); // Navigate to the jobs page
+        } else {
+          this.wrongCreds = true; // Credentials are incorrect
+        }
+      },
+      error: (err) => {
+        console.error('Error during authentication:', err);
+        this.wrongCreds = true; // Show error as wrong credentials
+      },
+    });
   }
 
 }
