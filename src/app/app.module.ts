@@ -23,6 +23,9 @@ import { LoginComponent } from './component/login-signup/login/login.component';
 import { SignupComponent } from './component/login-signup/signup/signup.component';
 import { ForgetpasswordComponent } from './component/login-signup/forgetpassword/forgetpassword.component';
 import { JobsPageComponent } from './component/jobs-page/jobs-page.component';
+import { Store, StoreModule } from '@ngrx/store';
+import {navbarReducer} from './shared/store/user.reducer'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -51,7 +54,12 @@ import { JobsPageComponent } from './component/jobs-page/jobs-page.component';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({isloggedin:navbarReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      // logOnly: environment.production, // Restrict extension to log-only mode in production
+    }),
   ],
   providers: [
     provideAnimationsAsync('noop')

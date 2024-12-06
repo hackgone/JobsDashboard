@@ -5,6 +5,8 @@ import { LoginUser } from '../../../interfcae/user';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { User } from '../../../interfcae/user';
+import { Store } from '@ngrx/store';
+import { jobPost } from '../../../shared/store/user.actions';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class LoginComponent {
   responsedata:User[] = [];
   
   userDetails!:FormGroup;
-  constructor(private readonly formBuilder:FormBuilder,private readonly userService:UserService,private route:ActivatedRoute,private router:Router){
+  constructor(private readonly formBuilder:FormBuilder,private readonly userService:UserService,private route:ActivatedRoute,private router:Router,private store:Store<{isloggedin:{isloggedin:boolean,userpopup:boolean}}>){
     this.userDetails=formBuilder.group({
       email: [
         '',
@@ -36,6 +38,7 @@ export class LoginComponent {
       next: (isValid) => {
         if (isValid) {
           this.wrongCreds = false; // Credentials are correct
+          this.store.dispatch(jobPost())
           this.router.navigate(['/jobs-page']); // Navigate to the jobs page
         } else {
           this.wrongCreds = true; // Credentials are incorrect

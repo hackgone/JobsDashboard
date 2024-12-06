@@ -1,11 +1,25 @@
 <mat-toolbar class="toolbar-class">
   <img src="/assets/images/logo.png" alt="" id="logo" />
   <span class="spacer"></span>
-  <!-- <-- new thing here how to attach routerlink--> 
-  <button mat-button id="button1"[routerLink]="'/login-signup/login'"> 
+  <!-- <-- new thing here how to attach routerlink -->
+  <button
+    *ngIf="showLoginButton"
+    mat-button
+    id="button1"
+    [routerLink]="'/login-signup/login'"
+    (click)="onNavchange()"
+  >
     Login/Signup
-    
   </button>
+  <div *ngIf="showUserDetail">
+    <button mat-button [matMenuTriggerFor]="menu" id="button2">
+      <mat-icon fontIcon="home"></mat-icon>
+      <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Log Out</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 <div class="baseline">
   <div></div>
