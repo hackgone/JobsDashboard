@@ -1,9 +1,11 @@
+{{showLoginButton$ | async}}
+{{showUserDetail$ | async}}
 <mat-toolbar class="toolbar-class">
   <img src="/assets/images/logo.png" alt="" id="logo" />
   <span class="spacer"></span>
   <!-- <-- new thing here how to attach routerlink -->
   <button
-    *ngIf="showLoginButton"
+    *ngIf="showLoginButton$ | async"
     mat-button
     id="button1"
     [routerLink]="'/login-signup/login'"
@@ -11,13 +13,13 @@
   >
     Login/Signup
   </button>
-  <div *ngIf="showUserDetail">
+  <div *ngIf="showUserDetail$ | async">
     <button mat-button [matMenuTriggerFor]="menu" id="button2">
       <mat-icon fontIcon="home"></mat-icon>
       <mat-icon fontIcon="arrow_drop_down"></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Log Out</button>
+      <button mat-menu-item (click)="logout()">Log Out</button>
     </mat-menu>
   </div>
 </mat-toolbar>
