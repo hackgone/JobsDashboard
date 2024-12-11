@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>Jobs posted by you</mat-card-header>
+  <div style="display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+    <div  *ngFor="let data of jobsData">
+        <mat-card class="applications" style="width: 300px;">
+            <mat-card-title>{{data.title}}</mat-card-title>
+            <mat-card-content>{{data.body}}</mat-card-content>
+            <mat-card-footer>
+              {{data.location}}
+              <button (click)="getApplicant(data.id)">View Application</button>
+            </mat-card-footer>
+          </mat-card>
+    </div>
+    
+  </div>
+    
+</mat-card>

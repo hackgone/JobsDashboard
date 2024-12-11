@@ -1,9 +1,11 @@
 export interface UserState {
-    isloggedin: boolean;
+    onHomeScreen: boolean;
     userpopup: boolean;
+    isLoggedin:boolean
   }
 
 export const initialState: UserState = {
-    isloggedin: true,
+    onHomeScreen: true,
     userpopup: false,
-  };
+    isLoggedin: false
+};

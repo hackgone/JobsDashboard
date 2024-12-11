@@ -8,7 +8,7 @@ import { resetState } from '../../shared/store/user.actions';
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent implements OnInit{
-  constructor(private store: Store<{ isloggedin: { isloggedin: boolean; userpopup: boolean } }>) {}
+  constructor(private store: Store<{ userState: { onHomeScreen: boolean; userpopup: boolean } }>) {}
 
   ngOnInit(): void{
     this.store.dispatch(resetState());

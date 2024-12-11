@@ -47,3 +47,13 @@
     }
     
   }
+  .loggedIn{
+    display: flex;
+    button{
+        color: white;
+        margin-right: 10px;
+    }
+    #dropdown{
+        width: 20px;
+    }
+  }

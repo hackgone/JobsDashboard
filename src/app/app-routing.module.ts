@@ -6,6 +6,7 @@ import { LoginComponent } from './component/login-signup/login/login.component';
 import { SignupComponent } from './component/login-signup/signup/signup.component';
 import { ForgetpasswordComponent } from './component/login-signup/forgetpassword/forgetpassword.component';
 import { JobsPageComponent } from './component/jobs-page/jobs-page.component';
+import { ShowallComponent } from './component/jobs-page/showall/showall.component';
 // import {LoginSignupComponent} from '/component'
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
     {path:'signup',title:'Login',component:SignupComponent},
     {path:'forgetpassword',title:'Forget Password',component:ForgetpasswordComponent}
   ]},
-  {path:'jobs-page',component:JobsPageComponent},
+  {path:'jobs-page',component:JobsPageComponent,children:[
+    {path:'showall',title:'AllJobs',component:ShowallComponent}
+  ]},
 ];
 
 @NgModule({

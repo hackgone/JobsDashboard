@@ -26,6 +26,7 @@ import { JobsPageComponent } from './component/jobs-page/jobs-page.component';
 import { Store, StoreModule } from '@ngrx/store';
 import {navbarReducer} from './shared/store/user.reducer'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ShowallComponent } from './component/jobs-page/showall/showall.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LoginComponent,
     SignupComponent,
     ForgetpasswordComponent,
-    JobsPageComponent
+    JobsPageComponent,
+    ShowallComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatRadioModule,
     HttpClientModule,
     StoreModule.forRoot({
-      isloggedin: navbarReducer // Register reducer
+      userState: navbarReducer // Register reducer
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

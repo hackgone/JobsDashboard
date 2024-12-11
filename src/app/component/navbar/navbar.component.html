@@ -13,14 +13,23 @@
   >
     Login/Signup
   </button>
-  <div *ngIf="showUserDetail$ | async">
-    <button mat-button [matMenuTriggerFor]="menu" id="button2">
-      <mat-icon fontIcon="home"></mat-icon>
-      <mat-icon fontIcon="arrow_drop_down"></mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()">Log Out</button>
-    </mat-menu>
+  <div *ngIf="showUserDetail$ | async" class="loggedIn">
+    <section style="display: inline;">
+      <div class="example-button-row">
+        <button mat-button>Post a Job</button>
+      </div>
+      
+    </section>
+    <div id="#dropdown">
+      <button mat-button [matMenuTriggerFor]="menu" id="button2">
+        <mat-icon fontIcon="home"></mat-icon>
+        <mat-icon fontIcon="arrow_drop_down"></mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Log Out</button>
+      </mat-menu>
+    </div>
+    
   </div>
 </mat-toolbar>
 <div class="baseline">

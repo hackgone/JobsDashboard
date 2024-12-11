@@ -13,11 +13,11 @@ export class NavbarComponent implements OnInit{
   showLoginButton$!: Observable<boolean>;
   showUserDetail$!: Observable<boolean>;
 
-  constructor(private store: Store<{ isloggedin: { isloggedin: boolean; userpopup: boolean } }>,private router:Router) {}
+  constructor(private store: Store<{ userState: { onHomeScreen: boolean; userpopup: boolean } }>,private router:Router) {}
 
   ngOnInit(): void {
-    this.showLoginButton$ = this.store.select((state) => state.isloggedin.isloggedin);
-    this.showUserDetail$ = this.store.select((state) => state.isloggedin.userpopup);
+    this.showLoginButton$ = this.store.select((state) => state.userState.onHomeScreen);
+    this.showUserDetail$ = this.store.select((state) => state.userState.userpopup);
   }
 
   onNavchange(): void {
