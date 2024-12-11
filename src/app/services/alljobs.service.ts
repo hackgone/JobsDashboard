@@ -14,7 +14,11 @@ export class AlljobsService {
       location: 'Bangalore',
       applicants: [
         { name: 'John Doe', gender: 'Male', email: 'john.doe@example.com', password: 'pass1234', skills: 'Angular, TypeScript, JavaScript' },
-        { name: 'Jane Smith', gender: 'Female', email: 'jane.smith@example.com', password: 'pass5678', skills: 'React, Node.js, HTML' }
+        { name: 'Jane Smith', gender: 'Female', email: 'jane.smith@example.com', password: 'pass5678', skills: 'React, Node.js, HTML' },
+        { name: 'Olivia Martinez', gender: 'Female', email: 'olivia.martinez@example.com', password: 'pass5678', skills: 'Excel, Python, SQL' },
+        { name: 'William Garcia', gender: 'Male', email: 'william.garcia@example.com', password: 'pass1234', skills: 'Tableau, Power BI, Data Visualization' },
+        { name: 'Sophia Adams', gender: 'Female', email: 'sophia.adams@example.com', password: 'pass7890', skills: 'Docker, Kubernetes, Jenkins' },
+        { name: 'Liam Carter', gender: 'Male', email: 'liam.carter@example.com', password: 'pass4321', skills: 'AWS, Azure, CI/CD Pipelines' }
       ]
     },
     {
@@ -54,7 +58,9 @@ export class AlljobsService {
       location: 'Delhi',
       applicants: [
         { name: 'Olivia Martinez', gender: 'Female', email: 'olivia.martinez@example.com', password: 'pass5678', skills: 'Excel, Python, SQL' },
-        { name: 'William Garcia', gender: 'Male', email: 'william.garcia@example.com', password: 'pass1234', skills: 'Tableau, Power BI, Data Visualization' }
+        { name: 'William Garcia', gender: 'Male', email: 'william.garcia@example.com', password: 'pass1234', skills: 'Tableau, Power BI, Data Visualization' },
+        { name: 'Sophia Adams', gender: 'Female', email: 'sophia.adams@example.com', password: 'pass7890', skills: 'Docker, Kubernetes, Jenkins' },
+        { name: 'Liam Carter', gender: 'Male', email: 'liam.carter@example.com', password: 'pass4321', skills: 'AWS, Azure, CI/CD Pipelines' }
       ]
     }
   ];

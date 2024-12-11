@@ -27,6 +27,8 @@ import { Store, StoreModule } from '@ngrx/store';
 import {navbarReducer} from './shared/store/user.reducer'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ShowallComponent } from './component/jobs-page/showall/showall.component';
+import { ApplicantPopupComponent } from './component/jobs-page/applicant-popup/applicant-popup.component';
+import {MatDialogModule} from "@angular/material/dialog"
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { ShowallComponent } from './component/jobs-page/showall/showall.componen
     SignupComponent,
     ForgetpasswordComponent,
     JobsPageComponent,
-    ShowallComponent
+    ShowallComponent,
+    ApplicantPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { ShowallComponent } from './component/jobs-page/showall/showall.componen
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
+    MatDialogModule,
     HttpClientModule,
     StoreModule.forRoot({
       userState: navbarReducer // Register reducer

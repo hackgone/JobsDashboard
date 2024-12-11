@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Applicants for this job</h1>
+<span>Total {{totalApplicant}} applications</span>
+<div mat-dialog-content>
+    <mat-card>
+        <div style="display: flex; flex-direction: row;gap: 10px; flex-wrap: wrap;justify-content: space-between;">
+          <div  *ngFor="let data of applicantData">
+              <mat-card class="applications" style="width: 200px;">
+                  <mat-card-title>{{data.name}}</mat-card-title>
+                  <mat-card-content>{{data.email}}</mat-card-content>
+                  <label mat-card-subtitle>Skills</label>
+                  <mat-card-footer>
+                    {{data.skills}}
+                  </mat-card-footer>
+                </mat-card>
+          </div>
+          
+        </div>
+          
+      </mat-card>
+</div>
+
