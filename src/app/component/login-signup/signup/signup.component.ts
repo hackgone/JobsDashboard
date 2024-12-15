@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfcae/user';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent {
   UserGender:string='';
   signup:boolean=true;
 
-  constructor(private formBuilder:FormBuilder,private userData:UserService) {
+  constructor(private formBuilder:FormBuilder,private userData:UserService,private router:Router) {
     this.userDetails=formBuilder.group({
       name:this.formBuilder.control('',Validators.required),
       email: [
@@ -50,6 +51,7 @@ export class SignupComponent {
     console.log(this.userData.getUserData());
     this.userDetails.reset(); // to reset the evalues
     console.log(this.userDetails.value); // Logs the form data
+    this.router.navigate(["/login-signup/login"])
     }
     else{
       console.error('Form is invalid!');

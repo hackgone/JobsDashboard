@@ -7,6 +7,7 @@ import { SignupComponent } from './component/login-signup/signup/signup.componen
 import { ForgetpasswordComponent } from './component/login-signup/forgetpassword/forgetpassword.component';
 import { JobsPageComponent } from './component/jobs-page/jobs-page.component';
 import { ShowallComponent } from './component/jobs-page/showall/showall.component';
+import { PostJobComponent } from './component/jobs-page/post-job/post-job.component';
 // import {LoginSignupComponent} from '/component'
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
     {path:'forgetpassword',title:'Forget Password',component:ForgetpasswordComponent}
   ]},
   {path:'jobs-page',component:JobsPageComponent,children:[
-    {path:'showall',title:'AllJobs',component:ShowallComponent}
+    {path:'showall',title:'AllJobs',component:ShowallComponent},
+    {path:'post-job',title:'postjob',component:PostJobComponent}
+
   ]},
 ];
 

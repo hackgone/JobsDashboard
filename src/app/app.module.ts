@@ -28,7 +28,8 @@ import {navbarReducer} from './shared/store/user.reducer'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ShowallComponent } from './component/jobs-page/showall/showall.component';
 import { ApplicantPopupComponent } from './component/jobs-page/applicant-popup/applicant-popup.component';
-import {MatDialogModule} from "@angular/material/dialog"
+import {MatDialogModule} from "@angular/material/dialog";
+import { PostJobComponent } from './component/jobs-page/post-job/post-job.component'
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {MatDialogModule} from "@angular/material/dialog"
     ForgetpasswordComponent,
     JobsPageComponent,
     ShowallComponent,
-    ApplicantPopupComponent
+    ApplicantPopupComponent,
+    PostJobComponent
   ],
   imports: [
     BrowserModule,

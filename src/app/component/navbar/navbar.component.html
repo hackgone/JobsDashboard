@@ -16,7 +16,7 @@
   <div *ngIf="showUserDetail$ | async" class="loggedIn">
     <section style="display: inline;">
       <div class="example-button-row">
-        <button mat-button>Post a Job</button>
+        <button mat-button (click)="postjob()">Post a Job</button>
       </div>
       
     </section>

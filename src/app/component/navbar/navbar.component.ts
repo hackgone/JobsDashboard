@@ -27,4 +27,7 @@ export class NavbarComponent implements OnInit{
   logout(): void {
     this.router.navigate(['/'])
   }
+  postjob(){
+    this.router.navigate(['/jobs-page/post-job'])
+  }
 }
