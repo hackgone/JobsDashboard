@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { jobPost, offhomescreen, onhomescreen, resetState, userLoggedIn } from './user.actions';
+import { jobPost, offhomescreen, onhomescreen, onPostJob, resetState, userLoggedIn } from './user.actions';
 import { initialState, UserState } from './user.state';
 import { state } from '@angular/animations';
 
@@ -11,8 +11,9 @@ const _navbarReducer = createReducer(
     on(onhomescreen, (state) => ({ ...state, onHomeScreen: true })),
     on(jobPost, (state) => ({ ...state, userpopup: true })),  //not using this
     on(resetState, () => ({ ...initialState })),  // Reset to initial state
-    on(userLoggedIn,(state) => ({...state,isLoggedin:true,userpopup:true,onHomeScreen:false}))
-  );
+    on(userLoggedIn,(state) => ({...state,isLoggedin:true,userpopup:true,onHomeScreen:false,onPostJob:false})),
+    on(onPostJob,(state) =>  ({...state,isLoggedin:true,userpopup:true,onHomeScreen:false,onPostJob:true})))
+
   
 
 export function navbarReducer(state: any, action: any) {

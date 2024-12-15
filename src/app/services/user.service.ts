@@ -148,7 +148,6 @@ export class UserService {
     });
   }
   
-
   updateUserPassword(email: string, password: string): Observable<boolean> {
     return new Observable((subscriber) => {
       if (!this.db) {

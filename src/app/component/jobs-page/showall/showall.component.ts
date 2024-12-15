@@ -15,7 +15,16 @@ export class ShowallComponent {
   jobsApplicant:User[] = [];
 
   constructor(private jobService:AlljobsService,private dialog:MatDialog){
-    this.jobsData = jobService.getJobs();
+    jobService.getInitializedJobs().then((jobsObservable) => {
+      jobsObservable.subscribe({
+        next: (data) => {
+          console.log('Jobs fetched:', data);
+          this.jobsData = data; // Assign the fetched jobs to the component variable
+        },
+        error: (err) => console.error('Error fetching jobs:', err),
+        complete: () => console.log('Job fetching complete'),
+      });
+    });
   }
 
   getApplicant(jobId:number){

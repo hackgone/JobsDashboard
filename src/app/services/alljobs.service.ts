@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Jobs } from '../interfcae/jobs';
 import { User } from '../interfcae/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlljobsService {
+  private dbName = 'JobsDB';
+  private dbVersion = 1;
+  private db: IDBDatabase | null = null;
+  private store: any;
+
   jobsData: Jobs[] = [
     {
       id: 1,
@@ -65,9 +71,94 @@ export class AlljobsService {
     }
   ];
   
-  constructor() { }
-  getJobs():Jobs[]{
-    return this.jobsData;
+
+  private initConnection():any{
+    if (!this.db) {
+      return Error('console.log("ctor jobs")Database not initialized');
+    }
+
+    const transaction = this.db.transaction(['jobs'], 'readwrite');
+    return transaction.objectStore('jobs');
+  }
+  
+  constructor() { 
+    console.log("ctor jobs")
+    this.initDB().then(() => {
+      console.log('Database initialized');
+      this.populateDummyData(); // Safely populate data after DB is ready
+    });
+  }
+  private initDB(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName, this.dbVersion);
+
+      request.onerror = (event) => {
+        console.error('Database error:', (event.target as any).error);
+        reject('Database failed to open');
+      };
+
+      request.onupgradeneeded = (event) => {
+        const db = (event.target as IDBOpenDBRequest).result;
+        if (!db.objectStoreNames.contains('jobs')) {
+          db.createObjectStore('jobs', { keyPath: 'id', autoIncrement: true });
+          console.log('Object store created/updated');
+        }
+      };
+
+      request.onsuccess = (event) => {
+        this.db = (event.target as IDBOpenDBRequest).result;
+        resolve(); // Database is ready
+      };
+    });
+  }
+
+  private populateDummyData() {
+    if (!this.db) {
+      console.error('Database is not initialized.');
+      return;
+    }
+  
+    const transaction = this.db.transaction(['jobs'], 'readwrite');
+    const store = transaction.objectStore('jobs');
+  
+    this.jobsData.forEach((job) => {
+      const request = store.add(job);
+      request.onsuccess = () => console.log('Job inserted:', job);
+      request.onerror = (error) => console.error('Error inserting job:', error);
+    });
+  
+    transaction.oncomplete = () => {
+      console.log('Dummy data inserted successfully');
+      // this.fetchAllJobs(); // Optional: Fetch all jobs after populating
+    };
+  }
+  async getInitializedJobs(): Promise<Observable<Jobs[]>> {
+    if (!this.db) {
+      await this.initDB();
+    }
+    return this.getJobs();
+  }
+  
+
+  getJobs():Observable<Jobs[]>{
+    return new Observable((subscriber) => {
+      if (!this.db) {
+        subscriber.error('Database not initialized');
+        subscriber.complete();
+        return;
+      }
+
+      this.store = this.initConnection();
+      const request = this.store.getAll();
+      request.onsuccess = () => {
+        subscriber.next(request.result);
+        subscriber.complete();
+      };
+
+      request.onerror = () => {
+        subscriber.error(request.error);
+      };
+    });
   }
   viewApplicant(jobId: number): User[] | null {
     for (const job of this.jobsData) {
@@ -78,7 +169,20 @@ export class AlljobsService {
     return null;
   }
   
-  addJob(req:Jobs){
-    this.jobsData.push(req);
+  addJob(req:Jobs):Observable<number> {
+    console.log(req)
+    return new Observable((subscriber) => {
+      this.store = this.initConnection();
+      const request = this.store.add(req);
+
+      request.onsuccess = () => {
+        subscriber.next(request.result as number); // Return the key (ID) of the added item
+        subscriber.complete();
+      };
+  
+      request.onerror = () => {
+        subscriber.error(request.error);
+      };
+    });
   }
 }

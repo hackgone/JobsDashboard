@@ -10,8 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class JobsPageComponent implements OnInit{
   IsAllowed!: boolean;
+  onPostpage$!:Observable<boolean> ;
 
-  constructor(private store: Store<{ userState: { onHomeScreen: boolean; userpopup: boolean ;isLoggedin:boolean} }>,private router:Router){
+  constructor(private store: Store<{ userState: { onHomeScreen: boolean; userpopup: boolean ;isLoggedin:boolean;onPostJob:boolean} }>,private router:Router){
     this.store.select((state) => state.userState.isLoggedin).subscribe((isLoggedIn) => {
       console.log('Logged In Status:', isLoggedIn);
       this.IsAllowed = isLoggedIn; // Assign to a variable
@@ -26,6 +27,8 @@ export class JobsPageComponent implements OnInit{
   }
   ngOnInit(): void {
     
+    this.onPostpage$ = this.store.select((state) => state.userState.onPostJob);
+    console.log("current value is ",this.onPostpage$)
   }
 
 }
