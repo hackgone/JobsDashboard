@@ -160,13 +160,27 @@ export class AlljobsService {
       };
     });
   }
-  viewApplicant(jobId: number): User[] | null {
-    for (const job of this.jobsData) {
-      if (job.id === jobId) {
-        return job.applicants;
-      }
-    }
-    return null;
+  viewApplicant(jobId: number): Observable<User[] | null> {
+    console.log("the job id is",jobId)
+    return new Observable((subscriber) => {
+      this.getJobs().subscribe({
+        next: (jobs) => {
+          console.log("jobs from the get all",jobs,"Feteched id",jobId)
+          // jobs.forEach(j => console.log(j.id))
+          const job = jobs.find((job) => job.id === jobId);
+          console.log(job)
+          if (job) {
+            subscriber.next(job.applicants);
+          } else {
+            subscriber.next([]);
+          }
+          subscriber.complete();
+        },
+        error: (err) => {
+          subscriber.error('Error fetching jobs: ' + err);
+        },
+      });
+    });
   }
   
   addJob(req:Jobs):Observable<number> {

@@ -16,6 +16,7 @@ export class ApplicantPopupComponent implements OnInit {
     private ref: MatDialogRef<ApplicantPopupComponent>
   ) {}
   ngOnInit(): void {
+    console.log("Data transfered",this.applicantData);
     this.totalApplicant = this.data.length;
     this.applicantData = this.data;
   }

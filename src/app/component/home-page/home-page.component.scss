@@ -3,14 +3,23 @@
     height: 50%;
     display: flex;
     flex-direction: column;
+    .data{
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 30px;
+        z-index: 0;
+    }
 }
 
-.bottom-banner{
-    height: 53vh;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(237, 246, 255);
-}
+// .bottom-banner{
+//     height: 53vh;
+//     display: flex;
+//     flex-direction: column;
+//     background-color: rgb(237, 246, 255);
+// }
 .image-div{
     position: absolute;
     width: 40%;
@@ -26,39 +35,39 @@
     // object-fit: cover; //aspect ratio
     border-radius: 15px;
 }
-.data{
-    flex:1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 30px;
-    z-index: 0;
-}
+
 .image{
     flex:1;
 }
-.welcome{
-    flex: 1;
-    background-color: white;
-}
-.button-1{
-    flex: 1;
-}
-#start-test{
-    font-size: 5em;
-    color: white;
-}
-#bt1{
-    width: 15vh;
-    height: 5vh;
-    margin-right: 10vw;
-    background-color: rgb(67, 175, 255);
-    border-radius: 8px;
-    color: white;
-    border: 1px solid rgb(121, 150, 188);
+#welcome {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     
+//     background: linear-gradient(to bottom, blue 40%, grey 60%);
 }
+
+
+#start-test {
+    font-size: clamp(2rem, 5vw, 5em); /* Responsive font size */
+    color: white;
+    text-align: center; /* Center-align the text */
+    margin: 0; /* Remove default margins */
+    line-height: 1.2; /* Improve readability */
+}
+
+.button-1{
+    // flex: 1;
+    width: 30vw;
+    display: flex;
+    justify-content: center; 
+    button{
+        border-radius: 10%;
+        background-color: rgb(67, 175, 255);
+        color: white;
+    }
+}
+
 .content{
     width: 100%;
     flex: 1;
@@ -83,21 +92,22 @@
 .banner-container{
     width: 60%;
     display: flex;
+    gap:10px;
     justify-content: space-between;
     //justify-items: center;
     align-items: center;
     
 }
-.box-content{
-//  border: 1px solid red;
- width: 30%;
- background-color: white;
- height: 60%;
- padding: 15px;
- box-shadow: 5px 5px 5px gray;
- overflow: auto;
+// .box-content{
+// //  border: 1px solid red;
+//  width: 30%;
+//  background-color: white;
+//  height: 60%;
+//  padding: 15px;
+//  box-shadow: 5px 5px 5px gray;
+//  overflow: auto;
  
-}
+// }
 .box-container h3{
     color: rgb(67, 175, 255);
 }

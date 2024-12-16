@@ -12,7 +12,7 @@ import { ApplicantPopupComponent } from '../applicant-popup/applicant-popup.comp
 })
 export class ShowallComponent {
   jobsData:Jobs[]=[];
-  jobsApplicant:User[] = [];
+  jobsApplicant:User[] | null = [];
 
   constructor(private jobService:AlljobsService,private dialog:MatDialog){
     jobService.getInitializedJobs().then((jobsObservable) => {
@@ -27,17 +27,21 @@ export class ShowallComponent {
     });
   }
 
-  getApplicant(jobId:number){
-    this.jobsData.forEach(val => {
-      if (val.id === jobId) {
-        this.jobsApplicant = val.applicants;
-      }
+  getApplicant(jobId: number) {
+    this.jobService.viewApplicant(jobId).subscribe({
+      next: (applicants) => {
+        this.jobsApplicant = applicants;
+  
+        console.log("Applicants fetched:", this.jobsApplicant);
+  
+        // Open the dialog here after the data is available
+        this.dialog.open(ApplicantPopupComponent, {
+          width: '90%',
+          data: this.jobsApplicant,
+        });
+      },
+      error: (err) => console.error('Error fetching applicants:', err),
+      complete: () => console.log('Applicant fetch complete'),
     });
-    this.dialog.open(ApplicantPopupComponent,{
-      width:'90%',
-      // height:'140px',
-      data:this.jobsApplicant
-    })
-    console.log(this.jobsApplicant)
   }
 }

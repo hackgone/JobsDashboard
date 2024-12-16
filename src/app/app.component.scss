@@ -1,0 +1,26 @@
+// /* Background setup */
+// .background {
+//     position: fixed; /* Cover the entire viewport */
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: -1; /* Push background behind the content */
+//   }
+  
+//   .top-section {
+//     height: 40%; /* Top 40% of the screen */
+//     background-color: blue;
+//   }
+  
+//   .bottom-section {
+//     height: 60%; /* Bottom 60% of the screen */
+//     background-color: grey;
+//   }
+  
+//   /* Content setup */
+//   .content {
+//     position: relative; /* Ensure content is above the background */
+//     z-index: 1;
+//   }
+ 

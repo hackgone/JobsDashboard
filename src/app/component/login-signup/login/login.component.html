@@ -2,7 +2,7 @@
   <div class="card-section">
     <mat-card>
       <mat-card-content>
-        <mat-card-header>Login</mat-card-header>
+        <mat-card-header><h3>Login</h3></mat-card-header>
         <mat-label>Email Address</mat-label>
         <mat-form-field>
           <input matInput formControlName="email">
@@ -27,10 +27,11 @@
         </mat-error>
       </mat-card-content>
       <div>
-        <button type="submit">Login</button>
+        <button mat-button type="submit">Login</button>
       </div>
-      <mat-card-footer>New To MyJobs?
-          <a [routerLink]="['/login-signup/signup']" style="color: blue;"> Create an account</a>
+      <mat-card-footer>
+        <p>New To MyJobs?
+          <a [routerLink]="['/login-signup/signup']" style="color: blue;"> Create an account</a></p>
       </mat-card-footer>
     </mat-card>
     </div>
