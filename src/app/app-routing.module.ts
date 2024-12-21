@@ -13,6 +13,7 @@ import { PostJobComponent } from './component/jobs-page/post-job/post-job.compon
 const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'login-signup',component:LoginSignupComponent,children:[
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     {path:'login',title:'Login',component:LoginComponent},
     {path:'signup',title:'Login',component:SignupComponent},
     {path:'forgetpassword',title:'Forget Password',component:ForgetpasswordComponent}

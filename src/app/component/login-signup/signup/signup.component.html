@@ -1,39 +1,47 @@
 <ng-container>
-  <form [formGroup]="userDetails" 
-  (ngSubmit)="saveData()"
-  >
-    <div class="card-section" >
+  <form [formGroup]="userDetails" (ngSubmit)="saveData()">
+    <div class="card-section">
       <mat-card>
         <mat-card-content>
-          <mat-card-header>Signup</mat-card-header>
+          <mat-card-header><h3>Signup</h3></mat-card-header>
           <mat-radio-group formControlName="gender">
-              <mat-label>I'm a*</mat-label>
-            <button 
-              mat-raised-button
-              type="button"
-              [ngClass]="UserGender == 'male' ? 'custom-button-color' : 'default-button-color'"
-              (click)="genderbuttonClick('male')"
-              value="male"
+            <mat-label>I'm a*</mat-label>
+            <button
+                type="button"
+                [ngStyle]="{
+                  'background-color': UserGender === 'male' ? 'blue' : 'transparent',
+                  'color': UserGender === 'male' ? 'white' : 'black'
+                }"
+                (click)="genderbuttonClick('male')"
+                
               >
-              Male
-            </button>
-            <button  
-            mat-raised-button
-            type="button"
-              [ngClass]="UserGender == 'female' ? 'custom-button-color' : 'default-button-color'"
+              <mat-icon fontIcon="person_search"></mat-icon>
+                Recruiter
+              </button>
+            <button
+              
+              type="button"
+              [ngStyle]="{
+                'margin-left':'2%',
+                'background-color': UserGender === 'female' ? 'blue' : 'transparent',
+                'color': UserGender === 'female' ? 'white' : 'black'
+              }"
               (click)="genderbuttonClick('female')"
               value="female"
-              >
-              Female
+              
+            >
+            <mat-icon fontIcon="groups"></mat-icon>
+
+              Candidate
             </button>
           </mat-radio-group>
           <mat-label>Full Name*</mat-label>
           <mat-form-field>
-            <input matInput formControlName="name">
+            <input matInput formControlName="name" />
           </mat-form-field>
           <mat-label>Email Address*</mat-label>
           <mat-form-field>
-            <input matInput formControlName="email">
+            <input matInput formControlName="email" />
             <!-- If user forget to put the email -->
             <mat-error *ngIf="userDetails.get('email')?.hasError('required')">
               Email is required
@@ -43,27 +51,35 @@
               Please enter a valid email address
             </mat-error>
           </mat-form-field>
-          <mat-label>Create Password*</mat-label>
-          <mat-form-field class="password">
-            <input matInput type="password" formControlName="password">
-          </mat-form-field>
-          <mat-label>Confirm Password*</mat-label>
-          <mat-form-field class="password">
-            <input matInput type="password" formControlName="cPassword">
-          </mat-form-field>
+          <div class="password">
+            <div >
+              <mat-label>Create Password*</mat-label>
+              <mat-form-field class="password">
+                <input matInput type="password" formControlName="password" />
+              </mat-form-field>
+            </div>
+            <div >
+              <mat-label>Confirm Password*</mat-label>
+              <mat-form-field class="password">
+                <input matInput type="password" formControlName="cPassword" />
+              </mat-form-field>
+            </div>
+          </div>
+
           <mat-label>Skills*</mat-label>
           <mat-form-field>
-            <input matInput formControlName="skills">
+            <input matInput formControlName="skills" />
           </mat-form-field>
         </mat-card-content>
-        <div>
+        <div class="btn">
           <button type="submit">Signup</button>
         </div>
         <mat-card-footer>Have an account?
+            <a [routerLink]="['/login-signup/login']" style="color: blue;"> Login</a>
           <!-- <a (click)="toggleForm()" style="color: blue;"
           > Login</a> -->
         </mat-card-footer>
       </mat-card>
     </div>
   </form>
-  </ng-container>
+</ng-container>

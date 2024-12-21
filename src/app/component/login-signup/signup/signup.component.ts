@@ -29,7 +29,7 @@ export class SignupComponent {
     })
   }
   genderbuttonClick(gender:string):void {
-    
+    console.log(gender)
     this.userDetails.get('gender')?.setValue(gender);
     this.UserGender = gender;
   }

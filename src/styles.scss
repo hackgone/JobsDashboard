@@ -10,3 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-label{
     display: block;
 }
+
+.mat-mdc-form-field-subscript-wrapper{
+    width: 0% !important;
+   }

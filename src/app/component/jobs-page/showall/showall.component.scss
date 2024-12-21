@@ -5,4 +5,12 @@ mat-card{
 .applications{
     margin: 3%;
     width: 28%;
+    border-radius: 7px;
+    padding: 5%;
+    height: 20vh;
+}
+mat-card-content{
+    height: 20vh;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

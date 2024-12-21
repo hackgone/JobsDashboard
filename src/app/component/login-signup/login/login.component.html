@@ -17,8 +17,10 @@
           
         </mat-form-field>
         
-        <mat-label>Password</mat-label>
-        <mat-label><a [routerLink]="['/login-signup/forgetpassword']" style="color: blue;">Forget your password?</a> </mat-label>
+        <div style="display: flex; justify-content:space-between" >
+          <mat-label>Password</mat-label>
+          <mat-label><a [routerLink]="['/login-signup/forgetpassword']" style="color: blue;">Forget your password?</a> </mat-label>
+        </div>
         <mat-form-field class="password">
           <input matInput type="password" formControlName="password">
         </mat-form-field>

@@ -1,10 +1,64 @@
-.mat-mdc-form-field{
-    width: 90%;
+.mat-mdc-form-field {
+  width: 100%;
+}
+.mat-mdc-card-footer {
+  margin-top: 5vh;
+  margin-bottom: 4vh;
+ 
+  p {
+    margin-left: 15vw;
   }
-  .mat-mdc-card-footer{
-    margin-top: 5vh;
-    margin-bottom: 4vh;
-    p{
-      margin-left: 15vw;
-    }
+}
+.mat-mdc-card{
+  padding: 20px;
+  height: 90vh;
+}
+.card-section {
+  width: 60vw;
+  margin-left: 20vw;
+  button{
+    width: 20%;
+    height: 10%;
+    color: black;
+    background-color: white;
+    border-radius: 15px;
   }
+}
+.password {
+  display: flex;
+  flex-direction: row;
+  // width: 36vw;
+  justify-content: space-between;
+  div{
+    width: 45%;
+  }
+  
+}
+.male-style {
+  background-color: blue;
+  color: white;
+}
+
+.default-style {
+  background-color: transparent;
+  color: black;
+}
+
+
+.btn{
+  button{
+    margin-top: 2%;
+    width: 20%;
+    height: 5vh;
+    margin-left: 40%;
+    border-radius: 10%;
+    background-color: rgb(67, 175, 255);
+    color: white;
+  }
+}
+.mat-mdc-card-footer{
+  margin-left:35%
+}
+.mat-mdc-form-field-error{
+  width: 100px;
+}
